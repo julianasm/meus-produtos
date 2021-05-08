@@ -1,0 +1,9 @@
+.SearchTask {
+    position: absolute;
+    width: 583px;
+    height: 52px;
+    left: 486px;
+    top: 99px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
