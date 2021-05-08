@@ -1,12 +1,14 @@
 import ToDo from './components/ToDo'
-import Profile from './components/Profile'
+import Menu from './components/Menu'
+import SearchTask from './components/SearchTask'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <ToDo />
-      <Profile />
+      <Menu />
+      <SearchTask />
     </div>
   );
 }

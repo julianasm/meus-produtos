@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './SearchTask.css'
 
 class SearchTask extends Component {
     constructor(props){
@@ -7,6 +7,8 @@ class SearchTask extends Component {
 
         this.state = {
             searchItem: '',
+            items: [],
+            isLoaded: false
         }
     }
 
@@ -20,16 +22,39 @@ class SearchTask extends Component {
         })
     }
 
-
-
+    componentDidMount() {
+        fetch('https://chronos.compraqui.app/api/tasks')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    items: json,
+                })
+            })
+    }s
 
     render() {
+        var { isLoaded, items } = this.state
+
         return (
-            <div className="SearchTask">
-                
-            
+            <form onSubmit={this.handleSubmit}>
+                <div className="SearchTask">
+                    Pesquisar
+                    <input type="text" value={this.state.searchItem} onChange={this.handleSearchChange}/>
+                <div>
             </div>
+            <div>
+                {items.filter(item => item.includes({ searchItem })).map(filteredTask => (
+                <li>
+                    {filteredTask}
+                </li>
+                ))}
+                </div>
+            </div>
+            </form>
 
         )
     }
 }
+
+export default SearchTask
