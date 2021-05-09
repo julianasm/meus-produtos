@@ -11,7 +11,25 @@ class ToDo extends Component {
         }
     }
 
-    componentDidMount() {
+
+    async componentDidMount() {
+        try {
+            const response = await fetch('https://chronos.compraqui.app/api/tasks');
+            const json = await response.json();
+            this.setState({ 
+                isLoaded: true,
+                items: json,
+             });
+            if (!response.ok) {
+                throw Error(response.statusText)
+            }
+        } catch (error){
+            console.log(error)
+        }
+    }
+
+
+ /*   componentDidMount() {
         fetch('https://chronos.compraqui.app/api/tasks')
             .then(res => res.json())
             .then(json => {
@@ -20,7 +38,7 @@ class ToDo extends Component {
                     items: json,
                 })
             })
-    }
+    }*/
 
     render() {
 

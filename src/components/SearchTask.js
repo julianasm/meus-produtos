@@ -22,6 +22,16 @@ class SearchTask extends Component {
         })
     }
 
+    async componentDidMount() {
+        const response = await fetch('https://chronos.compraqui.app/api/tasks');
+        const json = await response.json();
+        this.setState({ 
+            isLoaded: true,
+            items: json,
+         });
+      }
+
+
     componentDidMount() {
         fetch('https://chronos.compraqui.app/api/tasks')
             .then(res => res.json())
@@ -31,7 +41,7 @@ class SearchTask extends Component {
                     items: json,
                 })
             })
-    }s
+    }
 
     render() {
         var { isLoaded, items } = this.state
@@ -39,17 +49,10 @@ class SearchTask extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="SearchTask">
-                    Pesquisar
-                    <input type="text" value={this.state.searchItem} onChange={this.handleSearchChange}/>
+                    <input type="text" placeholder="Pesquisar" value={this.state.searchItem} onChange={this.handleSearchChange}/>
                 <div>
             </div>
-            <div>
-                {items.filter(item => item.includes({ searchItem })).map(filteredTask => (
-                <li>
-                    {filteredTask}
-                </li>
-                ))}
-                </div>
+
             </div>
             </form>
 

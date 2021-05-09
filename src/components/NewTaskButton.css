@@ -1,0 +1,46 @@
+.newTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: absolute;
+    width: 156px;
+    height: 54px;
+    left: 913px;
+    top: 604px;
+    background: #0047FF;
+    border-radius: 10px;
+}
+
+.plus__sign {
+    position: absolute;
+    left: 20.83%;
+    right: 20.83%;
+    top: 20.83%;
+    bottom: 20.83%;
+}
+
+.newTask__text {
+    position: static;
+    width: 94px;
+    height: 21px;
+    left: 47px;
+    top: 16.5px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 8px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './CreateTask.css'
 
 class CreateTask extends Component {
     constructor (props) {
@@ -12,33 +12,47 @@ class CreateTask extends Component {
     
     }
 
-    changeHandler = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+    changeHandlerTask = (event) => {
+        this.setState({
+            taskName: event.target.value,
+        })
     }
 
-    submitHandler = e => {
-        e.preventDefault()
-        console.log(this.state)
+    changeHandlerDescription = (event) => {
+        this.setState({
+            taskDescription: event.target.value,
+        })
+    }
+ 
+    handleSubmit(event){ 
+        event.preventDefault();
+        fetch('/', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(this.state)}
+        ).then(function(response){
+            console.log(response)
+            return response.json
+        })
     }
 
     render() {
-        const { taskName, taskDescription} = this.State
         return (
-            <div>
-                <form onSubmit={this.submitHandler}>
+            <div className="create__task">
+                <form className="task__info" onSubmit={this.handleSubmit}>
                     <div>
                         <input
                             type="text"
                             name="taskTitle"
-                            value={ taskName }
-                            onChane={ this.changeHandler }/>
+                            value={ this.state.taskName }
+                            onChange={ this.changeHandlerTask }/>
                     </div>
                     <div>
                         <input
                             type="text"
                             name="taskDescription"
-                            value={ taskDescription }
-                            onChane={ this.changeHandler }/>
+                            value={ this.state.taskDescription }
+                            onChange={ this.changeHandlerDescription }/>
                     </div>
                     <button type="Submit">Salvar</button>
                 </form>
@@ -48,3 +62,5 @@ class CreateTask extends Component {
 
 
 }
+
+export default CreateTask

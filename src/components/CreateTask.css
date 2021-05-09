@@ -1,0 +1,19 @@
+.create__task {
+    position: absolute;
+    width: 1366px;
+    height: 728px;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.task__info{
+    position: absolute;
+    width: 315px;
+    height: 294px;
+    left: 526px;
+    top: 217px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
