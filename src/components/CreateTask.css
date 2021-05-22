@@ -17,3 +17,32 @@
     background: #FFFFFF;
     border-radius: 10px;
 }
+
+.save {
+    position: absolute;
+    width: 58px;
+    height: 17px;
+    left: 756px;
+    top: 469px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #0047FF;
+}
+
+.cancel {
+    position: absolute;
+    width: 84px;
+    height: 16px;
+    left: 658px;
+    top: 469px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0047FF;
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import './CreateTask.css'
+import ToDo from './ToDo'
+
 
 class CreateTask extends Component {
     constructor (props) {
@@ -39,7 +42,8 @@ class CreateTask extends Component {
     render() {
         return (
             <div className="create__task">
-                <form className="task__info" onSubmit={this.handleSubmit}>
+                <div className="task__info">
+                <form>
                     <div>
                         <input
                             type="text"
@@ -54,8 +58,26 @@ class CreateTask extends Component {
                             value={ this.state.taskDescription }
                             onChange={ this.changeHandlerDescription }/>
                     </div>
-                    <button type="Submit">Salvar</button>
                 </form>
+                <Router>
+                <div>
+                    <Link to="/tarefas">
+                        <button onSubmit={this.handleSubmit}
+                        className="save"
+                        href='../src/components/ToDo.js'>Salvar</button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/tarefas">
+                        <button className="cancel" 
+                        href='../src/components/ToDo.js'>Cancelar</button>
+                    </Link>
+                </div>
+                <Switch>
+                    <Route path='/tarefas' component={ ToDo }/>
+                </Switch>
+                </Router>
+                </div>
             </div>
         )
     }
